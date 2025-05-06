@@ -1,6 +1,7 @@
 import { StyleSheet } from "react-native";
 import { useState } from "react";
 import { View , Text, FlatList, Image} from "react-native-web";
+import CardProduct from "./cardProduct";
 
 export default function Product(){      
 
@@ -22,11 +23,12 @@ export default function Product(){
             <FlatList
                 data={produtos}
                 renderItem={({ item }) => (
-                    <View style={styles.card}>
-                        <Text style={styles.cardText}>ID: {item.id}</Text>
-                        <Text style={styles.cardText}>{item.nome} - R$ {item.valor.toFixed(2)}</Text>
-                        <Image source={{ uri:item.imagem }} style={styles.image} />
-                    </View>
+                    <CardProduct
+                    id = {item.id}
+                    nome = {item.nome}
+                    valor = {item.valor}
+                    imagem = {item.imagem}  
+                    />
                 )}
                 keyExtractor={item => item.id.toString()}
             />
@@ -42,14 +44,6 @@ const styles = StyleSheet.create({
     txt:{
         fontSize: 30,
         },
-    card:{
-        backgroundColor: '#ffffff',
-        padding: 15,
-        borderRadius: 8,
-        borderWidth: 1,
-        borderColor: '#ddd',
-        width: 300,
-    },
     cardText:{
         fontSize: 18,
     },

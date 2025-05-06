@@ -15,6 +15,7 @@ import Home from './Screens/Home';
 import Feed from './Screens/feed';
 import Count from './Screens/count';
 import Product from './Screens/Product';
+import CardProduct from './Screens/cardProduct';
 
 function BottomTabs(){
   
@@ -57,7 +58,6 @@ function BottomTabs(){
         <Entypo name="Product" size={24} color="black" />
     }}
     />
-
   </BottomTab.Navigator>
   )
 }
