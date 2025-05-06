@@ -1,20 +1,78 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+import 'react-native-gesture-handler';
+
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Entypo from '@expo/vector-icons/Entypo';
+import { createStackNavigator } from '@react-navigation/stack';
+
+
+
+import Login from './Screens/Login';
+import Home from './Screens/Home';
+import Feed from './Screens/feed';
+import Count from './Screens/count';
+import Product from './Screens/Product';
+
+function BottomTabs(){
+  
+  
+  const BottomTab = createBottomTabNavigator();
+
+  return(
+  <BottomTab.Navigator
+  screenOptions={{
+   headerStyle :{backgroundColor:'#f99'},
+   headerTintColor:'white',
+   tabBarActiveBackgroundColor: '#da70d6'
+  }}
+  >
+
+
+    <BottomTab.Screen name='feed' component={Feed}
+    options={{
+      tabBarIcon: () =>
+        <Entypo name="login" size={24} color="black" />
+    }}
+    />
+    <BottomTab.Screen name='Home' component={Home}
+       options={{
+          tabBarIcon: () =>
+          <Entypo name="home" size={24} color="black" />
+          }}
+         />
+    <BottomTab.Screen name='count' component={Count}
+       options={{
+          tabBarIcon: () =>
+          <Entypo name="home" size={24} color="black" />
+          }}
+         />
+
+
+<BottomTab.Screen name='Product' component={Product}
+    options={{
+      tabBarIcon: () =>
+        <Entypo name="Product" size={24} color="black" />
+    }}
+    />
+
+  </BottomTab.Navigator>
+  )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default function App() {
+
+  const Stack = createStackNavigator();
+    
+  
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name='TelaLogin' component={Login}/>
+        <Stack.Screen options={{headerShown:false}} name='Home' component={BottomTabs}/>
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
