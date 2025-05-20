@@ -8,9 +8,6 @@ export default function Register({ navigation }) {
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
 
-    const VerificaUser = () =>{
-      
-    }
 
   const RegistroUsuario  = () => {
             createUserWithEmailAndPassword(auth, email, senha)

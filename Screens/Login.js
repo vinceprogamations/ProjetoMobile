@@ -1,10 +1,24 @@
 import { useState } from 'react';
 import { View, Text, StyleSheet, TextInput, Button } from 'react-native';
+import {auth} from '../controller';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 
 export default function Login({ navigation }) {
   
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
+
+  const VerificaUser = () => {
+    signInWithEmailAndPassword(auth, email, senha)
+    .then((userCredential) => {
+    navigation.navigate('Home')
+  
+    // 
+  })
+  .catch((error) => {
+      console.log('Erro ao fazer login. ',error.message);
+  });
+  }
 
   return (
     <View style={styles.container}>
@@ -29,7 +43,7 @@ export default function Login({ navigation }) {
       <Button
         title="Login"
         color="black"
-        onPress={() => navigation.navigate('Home')} 
+        onPress={VerificaUser}
       />
 
       <Button
