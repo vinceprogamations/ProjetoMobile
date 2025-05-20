@@ -17,6 +17,7 @@ import Count from './Screens/count';
 import Product from './Screens/Product';
 import CardProduct from './Screens/cardProduct';
 import Register from './Screens/Register';
+import Cadastrar from './Screens/Cadastrar';
 
 function BottomTabs(){
   
@@ -54,6 +55,13 @@ function BottomTabs(){
 
 
 <BottomTab.Screen name='Product' component={Product}
+    options={{
+      tabBarIcon: () =>
+        <Entypo name="Product" size={24} color="black" />
+    }}
+    />
+
+    <BottomTab.Screen name='Cadastrar Produto' component={Cadastrar}
     options={{
       tabBarIcon: () =>
         <Entypo name="Product" size={24} color="black" />
