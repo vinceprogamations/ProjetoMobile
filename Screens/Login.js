@@ -1,6 +1,11 @@
+import { useState } from 'react';
 import { View, Text, StyleSheet, TextInput, Button } from 'react-native';
 
 export default function Login({ navigation }) {
+  
+  const [email, setEmail] = useState("");
+  const [senha, setSenha] = useState("");
+
   return (
     <View style={styles.container}>
       <Text style={styles.titulo}>Página de Login</Text>
@@ -9,19 +14,28 @@ export default function Login({ navigation }) {
         style={styles.txtinput}
         placeholder="Nome"
         placeholderTextColor={'#999'}
+        value={email}
+        onChangeText={setEmail}
       />
 
       <TextInput
         style={styles.txtinput}
         placeholder="Senha"
         placeholderTextColor={'#999'}
-        secureTextEntry={true} 
+        value={senha}
+        onChangeText={setSenha}
       />
 
       <Button
         title="Login"
         color="black"
         onPress={() => navigation.navigate('Home')} 
+      />
+
+      <Button
+        title="Cadastrar"
+        color="black"
+        onPress={() => navigation.navigate('TelaCadastro')} 
       />
     </View>
   );

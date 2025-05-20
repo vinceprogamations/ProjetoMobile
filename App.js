@@ -16,6 +16,7 @@ import Feed from './Screens/feed';
 import Count from './Screens/count';
 import Product from './Screens/Product';
 import CardProduct from './Screens/cardProduct';
+import Register from './Screens/Register';
 
 function BottomTabs(){
   
@@ -58,6 +59,7 @@ function BottomTabs(){
         <Entypo name="Product" size={24} color="black" />
     }}
     />
+
   </BottomTab.Navigator>
   )
 }
@@ -71,7 +73,9 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name='TelaLogin' component={Login}/>
+        <Stack.Screen name='TelaCadastro' component={Register}/>
         <Stack.Screen options={{headerShown:false}} name='Home' component={BottomTabs}/>
+
       </Stack.Navigator>
     </NavigationContainer>
   );
