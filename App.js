@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-
+import { CarrinhoProvider } from './CarrinhoProvider.js';
 import 'react-native-gesture-handler';
 
 import { NavigationContainer } from '@react-navigation/native';
@@ -18,6 +18,7 @@ import Product from './Screens/Product';
 import CardProduct from './Screens/cardProduct';
 import Register from './Screens/Register';
 import Cadastrar from './Screens/Cadastrar';
+import Carrinho from './Screens/Carrinho.js';
 
 function BottomTabs(){
   
@@ -68,6 +69,13 @@ function BottomTabs(){
     }}
     />
 
+    <BottomTab.Screen name='Carrinho' component={Carrinho}
+    options={{
+      tabBarIcon: () =>
+        <Entypo name="Carrinho" size={24} color="black" />
+    }}
+    />
+
   </BottomTab.Navigator>
   )
 }
@@ -78,13 +86,14 @@ export default function App() {
     
   
   return (
+  <CarrinhoProvider>
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name='TelaLogin' component={Login}/>
         <Stack.Screen name='TelaCadastro' component={Register}/>
         <Stack.Screen options={{headerShown:false}} name='Home' component={BottomTabs}/>
-
       </Stack.Navigator>
     </NavigationContainer>
+  </CarrinhoProvider>
   );
 }

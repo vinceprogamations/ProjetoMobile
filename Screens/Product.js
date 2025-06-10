@@ -4,11 +4,14 @@ import { View , Text,  FlatList, Image} from "react-native-web";
 import CardProduct from "./cardProduct";
 import { db } from "../controller";
 import {collection, getDocs} from "firebase/firestore";
+import { useCarrinho } from "../CarrinhoProvider";
+import Carrinho from "./Carrinho";
 
-export default function Product(){      
+export default function Product( navigation ){      
 
     const [produtos, setProdutos] = useState([  // [] de array {} de dicionario
     ]);
+    const {adicionarProduto} = useCarrinho()
 
     useEffect(() =>{
         async function carregarProdutos() {
@@ -39,6 +42,10 @@ export default function Product(){
                     nome = {item.nome}
                     valor = {item.valor}
                     imagem = {item.imagem}  
+                    comprar={() => {
+                        adicionarProduto(item)
+                        navigation.navigate('Carrinho')
+                    }}  
                     />
                 )}
                 keyExtractor={item => item.id.toString()}

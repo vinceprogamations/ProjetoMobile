@@ -1,12 +1,14 @@
 import {View, Text, Image, StyleSheet} from 'react-native';
+import { Button } from 'react-native-web';
 
-export default function CardProduct({id,nome,valor,imagem}){
+export default function CardProduct({id,nome,valor,imagem,comprar}){
     return (
         <View style={styles.card}>
             <Image style={styles.image} source={{uri:imagem }}></Image>
             <Text style={styles.txtItem}>
                 {nome} R$ - {valor.toFixed(2)}
             </Text>
+            <Button title='Comprar' onPress={comprar}/>
         </View>
     )
 }
