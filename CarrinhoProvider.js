@@ -1,7 +1,8 @@
-import { createContext , useContext, useState } from "react";
-import { db, auth } from '../controller'
+import { createContext , useContext, useState, useEffect } from "react";
+import { db, auth } from "./controller";
 import { doc, setDoc, getDoc } from 'firebase/firestore';
 import { onAuthStateChanged } from 'firebase/auth';
+
 
 
 const CarrinhoContext = createContext();
@@ -46,8 +47,8 @@ export function CarrinhoProvider ({ children }) {
     async function salvarCarrinhoNoFirebase(lista) {
       if (!usuario || carregandoCarrinho) return;
 
-      try {
-        const docRef = doc(db, 'carrinhos', usuario.uid);
+        try {
+          const docRef = doc(db, 'carrinhos', usuario.uid);
         await setDoc(docRef, { produtos: lista });
       } catch (error) {
         console.log('Erro ao salvar carrinho no Firebase:', error);

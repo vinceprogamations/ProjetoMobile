@@ -7,7 +7,7 @@ import {collection, getDocs} from "firebase/firestore";
 import { useCarrinho } from "../CarrinhoProvider";
 import Carrinho from "./Carrinho";
 
-export default function Product( navigation ){      
+export default function Product( {navigation} ){      
 
     const [produtos, setProdutos] = useState([  // [] de array {} de dicionario
     ]);
